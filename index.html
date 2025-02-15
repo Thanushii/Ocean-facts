@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Ocean Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #factDisplay {
+            margin: 20px 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Ocean Fact</h1>
+        <p id="factDisplay">Click the button to get a fact!</p>
+        <button id="factButton">Get Fact</button>
+    </div>
+    <script>
+        const facts = [
+            "The ocean covers more than 70% of the Earth's surface.",
+            "The Pacific Ocean is the largest ocean, covering more than 63 million square miles.",
+            "The ocean is home to an estimated 230,000 known species, with millions more yet to be discovered.",
+            "The average depth of the ocean is about 12,080 feet (3,682 meters).",
+            "The ocean plays a crucial role in regulating the Earth's climate by absorbing carbon dioxide.",
+            "The Mariana Trench is the deepest part of the ocean, reaching depths of about 36,000 feet (10,973 meters).",
+            "Oceans produce over half of the world's oxygen through phytoplankton.",
+            "The ocean has a significant impact on weather patterns and can influence climate events like El Niño.",
+            "Coral reefs, found in warm, shallow waters, are some of the most diverse ecosystems on the planet.",
+            "The ocean is home to the largest animal on Earth, the blue whale, which can weigh up to 200 tons."
+        ];
+
+        let attempts = 0;
+
+        document.getElementById('factButton').addEventListener('click', function() {
+            if (attempts < 3) {
+                const randomIndex = Math.floor(Math.random() * facts.length);
+                document.getElementById('factDisplay').innerText = facts[randomIndex];
+                attempts++;
+            } else {
+                moveButton();
+            }
+        });
+
+        function moveButton() {
+            const button = document.getElementById('factButton');
+            const randomX = Math.floor(Math.random() * (window.innerWidth - button.offsetWidth));
+            const randomY = Math.floor(Math.random() * (window.innerHeight - button.offsetHeight));
+            button.style.position = 'absolute';
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+        }
+    </script>
+</body>
+</html>
 
